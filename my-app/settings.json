@@ -1,0 +1,10 @@
+// validate typescript code, as well as javascript code with ESLint
+{
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      { "language": "typescript", "autoFix": true },
+      { "language": "typescriptreact", "autoFix": true }
+    ]
+  }
+  
