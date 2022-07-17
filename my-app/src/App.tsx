@@ -4,6 +4,8 @@ import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import './App.css';
 import Header from './components/Header';
 
+
+// custom color theme that can be applied across application  using ConextAPI
 const customTheme = createTheme({
   palette: {
     primary: {
@@ -14,6 +16,7 @@ const customTheme = createTheme({
 });
 
 function App() {
+
   return (
     <>
       <ThemeProvider theme={customTheme}>
