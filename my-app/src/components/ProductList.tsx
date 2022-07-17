@@ -35,6 +35,7 @@ const ProductList = ({ filterBy, searchBy }: ProductListI) => {
                 productName={product.productName}
                 price={product.price}
                 productImage={product.productImage}
+                isSale={product.isSale}
               />
             </Grid>
           ))}

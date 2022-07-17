@@ -9,7 +9,7 @@ export interface ProductData {
 
 export type ProductProps = Pick<
   ProductData,
-  'productName' | 'productImage' | 'price'
+  'productName' | 'productImage' | 'price' | 'isSale'
 >;
 
 export interface ProductListI {

@@ -72,7 +72,7 @@ export const Product = (props: Readonly<ProductProps>) => {
   return (
     <>
       <Paper className={classes.paper}>
-        <div className={classes.saleBadge}>Sale</div>
+        {props.isSale && <div className={classes.saleBadge}>Sale</div>}
         <Card className={classes.card}>
           <CardMedia
             className={classes.media}
