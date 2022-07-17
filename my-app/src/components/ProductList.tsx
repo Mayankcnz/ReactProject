@@ -1,9 +1,8 @@
 import { Product } from './Product';
 import { Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import { ProductData, ProductListI } from '../interfaces/Product';
-import { useQuery } from 'react-query';
-import axios from 'axios';
+import { ProductListI } from '../interfaces/Product';
+import useProductsHook from '../services/useProductsHook';
 
 const useStyles = makeStyles({
   conatiner: {
@@ -11,27 +10,10 @@ const useStyles = makeStyles({
   },
 });
 
-const GET_PRODUCTS = async (): Promise<ProductData[]> => {
-  try {
-    const { data, status } = await axios.get<{ products: ProductData[] }>(
-      './productsData.json',
-    );
-    if (status !== 200) throw new Error('Netword response was not ok');
-    return data.products;
-  } catch (error: any) {
-    throw new Error(error.message);
-  }
-};
-
 const ProductList = ({ filterBy }: ProductListI) => {
-  const { data: products, status } = useQuery<ProductData[]>(
-    'products',
-    GET_PRODUCTS,
-  );
-
-  console.log('products', products);
-
   const classes = useStyles();
+  const { products, status } = useProductsHook();
+
   return (
     <div className={classes.conatiner}>
       <Grid container justifyContent="flex-start">

@@ -1,14 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import './App.css';
-import Header from './components/Header';
+import AppBar from './components/AppBar';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import ProductList from './components/ProductList';
 import useProductFilters, { isOfType } from './services/useProductFilters';
 import Filter from './components/Filter';
 import { filters } from './interfaces/Filter';
 import { Container } from '@material-ui/core';
+import SearchBar from './components/SearchBar';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import HomeIcon from '@mui/icons-material/Home';
+import CloseIcon from '@mui/icons-material/Close';
 
 // custom color theme that can be applied across application  using ConextAPI
 const customTheme = createTheme({
@@ -19,6 +22,16 @@ const customTheme = createTheme({
     },
   },
 });
+
+const HeaderItems = () => (
+  <div style={{ flexGrow: 1 }}>
+    <ArrowBackIcon />
+    <ArrowForwardIcon />
+    <CloseIcon />
+    <HomeIcon />
+    <SearchBar />
+  </div>
+);
 
 /**
  * QueryProviders wrappes Component that needs to fetch the data, usinguseQuery hook
@@ -36,11 +49,14 @@ function App() {
     if (isOfType(type)) operations.updateFilter(type);
   };
 
+  const handleSearch = (text: string) => {};
+
   return (
     <>
       <ThemeProvider theme={customTheme}>
-        <Container maxWidth="xl">
-          <Header
+        <AppBar children={<HeaderItems />} />
+        <Container maxWidth="xl" style={{ padding: 80 }}>
+          <AppBar
             children={
               <Filter
                 filters={[...filters]}
@@ -54,6 +70,7 @@ function App() {
             <ProductList filterBy={models.filters?.filterType || 'All'} />
           </QueryClientProvider>
         </Container>
+        <AppBar positionFixed={true} />
       </ThemeProvider>
     </>
   );

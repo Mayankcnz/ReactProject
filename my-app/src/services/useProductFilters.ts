@@ -5,7 +5,9 @@ import {
   FilterTypes,
   ProductFilter,
 } from '../interfaces/Filter';
+
 // convert to filter type if srtring is valid
+// ideally should check against the array using includes function for future proof
 export function isOfType(value: string): value is FilterTypes {
   return (
     filters.filter(
@@ -23,9 +25,6 @@ const useProductFilters = (): ProductFilter => {
   const [filters, _updateFilter] = useState<Filter>();
 
   const updateFilter = (type: FilterTypes) => {
-    // console.log('updating fiulter', filterType, value);
-    console.log('previosu state', filters);
-    // _updateFilter({ [filterType]: value });
     _updateFilter({ filterType: type });
   };
 

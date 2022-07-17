@@ -1,9 +1,5 @@
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import makeStyles from '@material-ui/core/styles/makeStyles';
@@ -24,10 +20,8 @@ const useStyles = makeStyles({
     height: 420,
     flex: 1,
     display: 'flex',
-    // alignItems: 'flex-end',
     verticalAlign: 'top',
     paddingTop: 30,
-    // align: 'center',
     justifyContent: 'center',
     elevation: 8,
     border: '2px solid black',
@@ -36,15 +30,10 @@ const useStyles = makeStyles({
   card: {
     width: 350,
     height: '100%',
-    // backgroundColor: 'green',
-    // marginBottom: 30,
   },
 
   media: {
     height: '80%',
-    // marginBottom: 150,
-    // width: '100%',
-    // margin: 30,
     border: '3px solid black',
   },
 
@@ -64,10 +53,7 @@ const useStyles = makeStyles({
   },
 
   saleBadge: {
-    // display: 'flex',
-    // justifyContent: 'center',
     background: 'red',
-    // borderRadius: '0px 30px 30px 30px',
     width: 140,
     position: 'absolute',
     height: 40,
@@ -103,14 +89,3 @@ export const Product = (props: Readonly<ProductProps>) => {
     </>
   );
 };
-
-/**
- * <Typography
-          className={classes.name}
-          gutterBottom
-          variant="h5"
-          component="div"
-        >
-          {props.productName + '  '} {props.price}
-        </Typography>
- */

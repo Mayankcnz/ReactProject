@@ -1,10 +1,4 @@
-import {
-  AppBar,
-  Button,
-  Container,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
+import { Button, Container, makeStyles, Typography } from '@material-ui/core';
 import { styled } from '@mui/system';
 import sx from '@mui/system/sx';
 import Toolbar from '@mui/material/Toolbar';
@@ -43,6 +37,7 @@ const useStyles = makeStyles({
 
 type Props = {
   children?: JSX.Element;
+  positionFixed?: boolean;
 };
 
 /**
@@ -51,7 +46,7 @@ type Props = {
  * @returns
  */
 
-const Header = (props: Props) => {
+const AppBar = (props: Props) => {
   const classes = useStyles();
 
   return (
@@ -62,6 +57,7 @@ const Header = (props: Props) => {
           borderBottom: 1,
           borderColor: 'divider',
           backgroundColor: 'lightblue',
+          position: `${props.positionFixed ? 'fixed' : 'overflow'}`,
         }}
       >
         {props.children}
@@ -70,4 +66,4 @@ const Header = (props: Props) => {
   );
 };
 
-export default Header;
+export default AppBar;

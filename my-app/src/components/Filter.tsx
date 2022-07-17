@@ -22,19 +22,10 @@ const useStyles = makeStyles((theme) => ({
 
 // can add more types in the future
 
-// type FilterTypes = 'Type';
-
-// convert string to the type useProductFilter needs to set the state
-
 const Filter = (props: Readonly<FilterProps>) => {
   const classes = useStyles();
 
-  // couldnt make the select form to work without this, quick unnecessary
-  // const [filterValue, setValue] = React.useState('');
-
-  console.log('filterValue', props.selectedFilter);
   const handleChange = (index: number) => {
-    // setValue(filters[index]);
     props.onFilter(index);
   };
 
