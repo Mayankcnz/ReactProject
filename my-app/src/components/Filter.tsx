@@ -1,12 +1,9 @@
-import { useRef, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import * as React from 'react';
-import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { FilterProps, filters, FilterTypes } from '../interfaces/Filter';
+import Select from '@mui/material/Select';
+import { FilterProps } from '../interfaces/Filter';
 const useStyles = makeStyles((theme) => ({
   form: {
     float: 'right',
@@ -21,7 +18,11 @@ const useStyles = makeStyles((theme) => ({
 // filters as the website grows
 
 // can add more types in the future
-
+/**
+ * if had more time, would have experimentated with useMemo to reduce unnecessary product list
+ *  renders when the users toggles and filter without changing the type. However, at the same time
+ * need to take into account that useMemo is an expensive operation
+ */
 const Filter = (props: Readonly<FilterProps>) => {
   const classes = useStyles();
 

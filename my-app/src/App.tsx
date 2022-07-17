@@ -6,13 +6,10 @@ import ProductList from './components/ProductList';
 import useProductFilters, { isOfType } from './services/useProductFilters';
 import Filter from './components/Filter';
 import { filters } from './interfaces/Filter';
-import { Container, makeStyles } from '@material-ui/core';
+import { Container, makeStyles, Typography } from '@material-ui/core';
 import SearchBar from './components/SearchBar';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import HomeIcon from '@mui/icons-material/Home';
-import CloseIcon from '@mui/icons-material/Close';
 import React from 'react';
+import MainBar from './components/MainBar';
 
 // custom color theme that can be applied across application  using ConextAPI
 const customTheme = createTheme({
@@ -33,15 +30,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-const HeaderItems = () => (
-  <>
-    <ArrowBackIcon fontSize="large" />
-    <ArrowForwardIcon fontSize="large" />
-    <CloseIcon fontSize="large" />
-    <HomeIcon fontSize="large" />
-  </>
-);
 
 /**
  * QueryProviders wrappes Component that needs to fetch the data, usinguseQuery hook
@@ -67,15 +55,20 @@ function App() {
 
   return (
     <>
+      {/**
+       * ideally  when it gets to small screen size, should use toggle menu
+       */}
       <ThemeProvider theme={customTheme}>
-        <AppBar
+        <MainBar onSearch={handleSearch} />
+        {/* <AppBar
           children={
             <div style={{ flexGrow: 1 }}>
               {' '}
-              <HeaderItems /> <SearchBar onSearch={handleSearch} />{' '}
+              <HeaderItems /> <Typography>Products</Typography>{' '}
+              <SearchBar onSearch={handleSearch} />{' '}
             </div>
           }
-        />
+        /> */}
         <Container maxWidth="xl" className={classes.container}>
           <AppBar
             children={
@@ -86,9 +79,6 @@ function App() {
               />
             }
           />
-          {/* can make a lot of optimisations using react query without having
-          // to implement mechanisms ourselves such as caching, infinte
-          Scrolling, pagination etc */}
           <QueryClientProvider client={queryClient}>
             <ProductList
               filterBy={models.filters?.filterType || 'All'}

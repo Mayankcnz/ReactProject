@@ -13,6 +13,12 @@ const GET_PRODUCTS = async (): Promise<ProductData[]> => {
     throw new Error(error.message);
   }
 };
+
+/**
+ * can make a lot of optimisations using react query without having
+ * to implement mechanisms ourselves such as caching, infinte
+ * Scrolling, pagination etc
+ */
 const useProductHook = () => {
   const { data: products, status } = useQuery<ProductData[]>(
     'products',
