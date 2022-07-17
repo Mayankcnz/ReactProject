@@ -5,6 +5,7 @@ import './App.css';
 import Header from './components/Header';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import ProductList from './components/ProductList';
+import useProductFilters from './services/useProductFilters';
 
 // custom color theme that can be applied across application  using ConextAPI
 const customTheme = createTheme({
@@ -22,6 +23,11 @@ const customTheme = createTheme({
 function App() {
   const queryClient = new QueryClient();
 
+  const { models, operations } = useProductFilters();
+
+  const handleFilter = (index: number) => {
+    console.log("filter hitting", index)
+  }
   
   return (
     <>

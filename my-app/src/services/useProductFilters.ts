@@ -1,21 +1,7 @@
 import { useState } from 'react';
+import { Filter, FilterTypes, ProductFilter } from '../interfaces/Filter';
 
-export type FilterTypes = 'Beer' | 'Wine' | 'Spirits' | 'Cider';
-
-interface Filter {
-  // [id: number]: string;
-  filterType: FilterTypes;
-}
-
-interface ProductFilter {
-  models: {
-    filters: Filter | undefined;
-  };
-  operations: {
-    updateFilter: (filterType: FilterTypes) => void;
-  };
-}
-
+// can extend tis hook to have various types of filters, and operations
 const useProductFilters = (): ProductFilter => {
   const [filters, _updateFilter] = useState<Filter>();
 
