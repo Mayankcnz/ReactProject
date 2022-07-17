@@ -33,7 +33,6 @@ function App() {
   const handleFilter = (index: number) => {
     const type = filters[index];
 
-    console.log('typefilter', type);
     if (isOfType(type)) operations.updateFilter(type);
   };
 

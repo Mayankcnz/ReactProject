@@ -39,7 +39,7 @@ const ProductList = ({ filterBy }: ProductListI) => {
           products &&
           products.map(
             (product, i) =>
-              filterBy === product.type && (
+              (filterBy === product.type || filterBy === undefined) && (
                 <Grid item xs={12} sm={6} md={4} lg={3}>
                   <Product
                     key={i}

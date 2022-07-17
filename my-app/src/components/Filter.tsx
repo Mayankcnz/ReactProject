@@ -6,7 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { FilterProps, FilterTypes } from '../interfaces/Filter';
+import { FilterProps, filters, FilterTypes } from '../interfaces/Filter';
 const useStyles = makeStyles((theme) => ({
   form: {
     float: 'right',
@@ -29,8 +29,12 @@ const useStyles = makeStyles((theme) => ({
 const Filter = (props: Readonly<FilterProps>) => {
   const classes = useStyles();
 
+  const [filterValue, setValue] = React.useState('');
+
+  console.log('filterValue', filterValue);
+
   const handleChange = (index: number) => {
-    console.log('onfilter');
+    setValue(filters[index]);
     props.onFilter(index);
   };
 
@@ -44,19 +48,19 @@ const Filter = (props: Readonly<FilterProps>) => {
         size="small"
       >
         <InputLabel id="demo-select-small" variant="outlined">
-          Age
+          All
         </InputLabel>
         <Select
           labelId="demo-select-small"
           id="demo-select-small"
-          value={''}
-          label="Age"
+          value={filterValue}
+          label="All"
         >
           {props.filters.map((index, val) => (
             <MenuItem
               onClick={(event) => handleChange(val)}
               key={index}
-              value={index}
+              value={filterValue}
             >
               {index}
             </MenuItem>
