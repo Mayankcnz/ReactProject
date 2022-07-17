@@ -77,7 +77,6 @@ export const Product = (props: Readonly<ProductProps>) => {
           <CardMedia
             className={classes.media}
             image={require(`../assets/imgs/${props.productImage}`)}
-            // title="Product"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">

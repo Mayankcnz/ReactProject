@@ -25,8 +25,6 @@ const useProductHook = () => {
     GET_PRODUCTS,
   );
 
-  console.log('dirname', __dirname);
-
   return { products: products, status: status };
 };
 

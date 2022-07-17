@@ -7,14 +7,6 @@ const SearchBar = (props: SearchProps) => {
     props.onSearch(event.target.value);
   };
   return (
-    // <TextField
-    //   id="outlined-basic"
-    //   label="Search Products"
-    //   variant="outlined"
-    //   size="small"
-    //   style={{ float: 'right' }}
-    //   onChange={handleChange}
-    // />
     <Form className="d-flex">
       <Form.Control
         type="search"

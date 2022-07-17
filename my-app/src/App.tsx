@@ -60,15 +60,6 @@ function App() {
        */}
       <ThemeProvider theme={customTheme}>
         <MainBar onSearch={handleSearch} />
-        {/* <AppBar
-          children={
-            <div style={{ flexGrow: 1 }}>
-              {' '}
-              <HeaderItems /> <Typography>Products</Typography>{' '}
-              <SearchBar onSearch={handleSearch} />{' '}
-            </div>
-          }
-        /> */}
         <Container maxWidth="xl" className={classes.container}>
           <AppBar
             children={
