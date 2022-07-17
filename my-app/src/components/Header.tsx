@@ -1,12 +1,14 @@
 import {
   AppBar,
+  Button,
   Container,
   makeStyles,
-  Toolbar,
   Typography,
 } from '@material-ui/core';
 import { styled } from '@mui/system';
 import sx from '@mui/system/sx';
+import Toolbar from '@mui/material/Toolbar';
+import React from 'react';
 
 const MyThemeComponent = styled('div')(
   sx({
@@ -54,19 +56,17 @@ const Header = (props: Props) => {
 
   return (
     //   <MyThemeComponent>{props.children}</MyThemeComponent>
-    <div className={classes.root}>
-      <AppBar className={classes.appbar} style={{ margin: 0 }}>
-        <Toolbar>
-          <Typography
-            variant="h6"
-            color="inherit"
-            className={classes.typography}
-          >
-            Header
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <React.Fragment>
+      <Toolbar
+        sx={{
+          borderBottom: 1,
+          borderColor: 'divider',
+          backgroundColor: 'lightblue',
+        }}
+      >
+        {props.children}
+      </Toolbar>
+    </React.Fragment>
   );
 };
 

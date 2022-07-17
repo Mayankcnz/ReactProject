@@ -40,24 +40,15 @@ function App() {
   return (
     <>
       <ThemeProvider theme={customTheme}>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container>
-            <Grid item xs={12}>
-              <div style={{ width: '70%' }}>
-                <Header
-                  children={
-                    <Filter filters={[...filters]} onFilter={handleFilter} />
-                  }
-                />
-              </div>
-            </Grid>
-            <Grid item xs={12} style={{ marginLeft: '40px' }}>
-              <QueryClientProvider client={queryClient}>
-                <ProductList filterBy={models.filters?.filterType} />
-              </QueryClientProvider>
-            </Grid>
-          </Grid>
-        </Box>
+        <Container maxWidth="xl">
+          <Header
+            children={<Filter filters={[...filters]} onFilter={handleFilter} />}
+          />
+
+          <QueryClientProvider client={queryClient}>
+            <ProductList filterBy={models.filters?.filterType} />
+          </QueryClientProvider>
+        </Container>
       </ThemeProvider>
     </>
   );

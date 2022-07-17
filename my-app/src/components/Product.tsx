@@ -19,7 +19,8 @@ const useStyles = makeStyles({
   },
 
   paper: {
-    backgroundColor: 'red',
+    backgroundColor: '#5F9EA0 ',
+    position: 'relative',
     height: 420,
     flex: 1,
     display: 'flex',
@@ -62,10 +63,20 @@ const useStyles = makeStyles({
     textAlign: 'center',
   },
 
-  name: {
-    // height: 10,
-    // verticalAlign: 'center',
-    // align: 'center',
+  saleBadge: {
+    // display: 'flex',
+    // justifyContent: 'center',
+    background: 'red',
+    // borderRadius: '0px 30px 30px 30px',
+    width: 140,
+    position: 'absolute',
+    height: 40,
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    textAlign: 'center',
+    fontSize: '20px',
   },
 });
 
@@ -75,6 +86,7 @@ export const Product = (props: Readonly<ProductProps>) => {
   return (
     <>
       <Paper className={classes.paper}>
+        <div className={classes.saleBadge}>Sale</div>
         <Card className={classes.card}>
           <CardMedia
             className={classes.media}
@@ -82,12 +94,7 @@ export const Product = (props: Readonly<ProductProps>) => {
             // title="Product"
           />
           <CardContent>
-            <Typography
-              className={classes.name}
-              gutterBottom
-              variant="h5"
-              component="div"
-            >
+            <Typography gutterBottom variant="h5" component="div">
               {props.productName + '  '} {props.price}
             </Typography>
           </CardContent>
