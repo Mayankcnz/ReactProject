@@ -15,6 +15,12 @@ type Props = {
   children?: JSX.Element;
 };
 
+/**
+ * Takes children prop that allows consumer of this component to render custom props
+ * @param props : children
+ * @returns 
+ */
+
 const Header = (props: Props) => (
   <MyThemeComponent>{props.children}</MyThemeComponent>
 );

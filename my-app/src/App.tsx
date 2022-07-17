@@ -16,7 +16,9 @@ const customTheme = createTheme({
 function App() {
   return (
     <>
-      <Header />
+      <ThemeProvider theme={customTheme}>
+        <Header />
+      </ThemeProvider>
     </>
   );
 }
