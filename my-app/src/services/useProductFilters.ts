@@ -1,5 +1,22 @@
 import { useState } from 'react';
-import { Filter, FilterTypes, ProductFilter } from '../interfaces/Filter';
+import {
+  Filter,
+  filters,
+  FilterTypes,
+  ProductFilter,
+} from '../interfaces/Filter';
+// convert to filter type if srtring is valid
+export function isOfType(value: string): value is FilterTypes {
+  return (
+    filters.filter(
+      (val) =>
+        val === 'Beer' ||
+        val === 'Cider' ||
+        val === 'Spirits' ||
+        val === 'Wine',
+    ).length > 0
+  );
+}
 
 // can extend tis hook to have various types of filters, and operations
 const useProductFilters = (): ProductFilter => {

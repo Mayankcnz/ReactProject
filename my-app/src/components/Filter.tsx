@@ -40,19 +40,13 @@ import { FilterProps, FilterTypes } from '../interfaces/Filter';
 
 // type FilterTypes = 'Type';
 
-
 // convert string to the type useProductFilter needs to set the state
 
-const Filter = (props: FilterProps) => {
+const Filter = (props: Readonly<FilterProps>) => {
   // const classes = useStyles();
 
-  // Object.keys(props).forEach((key) => {
-  //   console.log('key', key, 'bal', props[Number(key)]['0']);
-  // });
-  // const { models, operations } = useProductFilter();
-
   const handleChange = (index: number) => {
-    console.log('999999');
+    console.log('onfilter');
     props.onFilter(index);
   };
 

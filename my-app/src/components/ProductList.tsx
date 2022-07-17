@@ -23,7 +23,7 @@ const GET_PRODUCTS = async (): Promise<ProductData[]> => {
   }
 };
 
-const ProductList = () => {
+const ProductList = ({ filterBy }: ProductListI) => {
   const { data: products, status } = useQuery<ProductData[]>(
     'products',
     GET_PRODUCTS,
@@ -37,16 +37,19 @@ const ProductList = () => {
       <Grid container justifyContent="flex-start">
         {status === 'success' &&
           products &&
-          products.map((product, i) => (
-            <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Product
-                key={i}
-                productName={product.productName}
-                price={product.price}
-                productImage={product.productImage}
-              />
-            </Grid>
-          ))}
+          products.map(
+            (product, i) =>
+              filterBy === product.type && (
+                <Grid item xs={12} sm={6} md={4} lg={3}>
+                  <Product
+                    key={i}
+                    productName={product.productName}
+                    price={product.price}
+                    productImage={product.productImage}
+                  />
+                </Grid>
+              ),
+          )}
       </Grid>
     </div>
   );

@@ -17,18 +17,6 @@ export interface ProductFilter {
 }
 
 export interface FilterProps {
-  readonly filters: string[];
+  filters: FilterTypes[];
   onFilter: (index: number) => void;
-}
-
-function isOfType(value: string): value is FilterTypes {
-  return (
-    filters.filter(
-      (val) =>
-        val === 'Beer' ||
-        val === 'Cider' ||
-        val === 'Spirits' ||
-        val === 'Wine',
-    ).length > 0
-  );
 }

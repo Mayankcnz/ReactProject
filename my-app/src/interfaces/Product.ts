@@ -13,5 +13,5 @@ export type ProductProps = Pick<
 >;
 
 export interface ProductListI {
-  products: ProductData[] | undefined;
+  filterBy: string | undefined
 }
