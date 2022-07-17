@@ -29,12 +29,12 @@ const useStyles = makeStyles((theme) => ({
 const Filter = (props: Readonly<FilterProps>) => {
   const classes = useStyles();
 
-  const [filterValue, setValue] = React.useState('');
+  // couldnt make the select form to work without this, quick unnecessary
+  // const [filterValue, setValue] = React.useState('');
 
-  console.log('filterValue', filterValue);
-
+  // console.log('filterValue', filterValue);
   const handleChange = (index: number) => {
-    setValue(filters[index]);
+    // setValue(filters[index]);
     props.onFilter(index);
   };
 
@@ -53,16 +53,16 @@ const Filter = (props: Readonly<FilterProps>) => {
         <Select
           labelId="demo-select-small"
           id="demo-select-small"
-          value={filterValue}
+          value={props.selectedFilter}
           label="All"
         >
-          {props.filters.map((index, val) => (
+          {props.filters.map((val, index) => (
             <MenuItem
-              onClick={(event) => handleChange(val)}
+              onClick={(event) => handleChange(index)}
               key={index}
-              value={filterValue}
+              value={val}
             >
-              {index}
+              {val}
             </MenuItem>
           ))}
         </Select>

@@ -8,7 +8,7 @@ import ProductList from './components/ProductList';
 import useProductFilters, { isOfType } from './services/useProductFilters';
 import Filter from './components/Filter';
 import { filters } from './interfaces/Filter';
-import { Box, Container, Grid } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
 // custom color theme that can be applied across application  using ConextAPI
 const customTheme = createTheme({
@@ -41,7 +41,13 @@ function App() {
       <ThemeProvider theme={customTheme}>
         <Container maxWidth="xl">
           <Header
-            children={<Filter filters={[...filters]} onFilter={handleFilter} />}
+            children={
+              <Filter
+                filters={[...filters]}
+                onFilter={handleFilter}
+                selectedFilter={models.filters?.filterType || 'All'} // learned about controlled and uncontrolled components, passing undefined instead of All was causing that warning
+              />
+            }
           />
 
           <QueryClientProvider client={queryClient}>

@@ -1,4 +1,4 @@
-export const filters = ['Beer', 'Wine', 'Spirits', 'Cider'] as const;
+export const filters = ['All', 'Beer', 'Wine', 'Spirits', 'Cider'] as const;
 
 export type FilterTypes = typeof filters[number];
 
@@ -19,4 +19,5 @@ export interface ProductFilter {
 export interface FilterProps {
   filters: FilterTypes[];
   onFilter: (index: number) => void;
+  selectedFilter: string;
 }
