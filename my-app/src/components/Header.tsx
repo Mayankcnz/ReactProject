@@ -1,3 +1,10 @@
+import {
+  AppBar,
+  Container,
+  makeStyles,
+  Toolbar,
+  Typography,
+} from '@material-ui/core';
 import { styled } from '@mui/system';
 import sx from '@mui/system/sx';
 
@@ -5,11 +12,32 @@ const MyThemeComponent = styled('div')(
   sx({
     color: 'black',
     backgroundColor: 'yellow',
-    m: 5,
+    m: 0,
     padding: 4,
     borderRadius: 1,
+    position: 'absolute',
+    top: '10%',
+    left: '50%',
+    msTransform: 'translate(-50%, -50%)',
+    transform: 'translate(-50%, -50%)',
+    width: '90%',
   }),
 );
+
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1,
+    paddingLeft: 100,
+  },
+  typography: {
+    flexGrow: 1,
+    align: 'center',
+  },
+
+  appbar: {
+    marginLeft: 10,
+  },
+});
 
 type Props = {
   children?: JSX.Element;
@@ -21,8 +49,25 @@ type Props = {
  * @returns
  */
 
-const Header = (props: Props) => (
-  <MyThemeComponent>{props.children}</MyThemeComponent>
-);
+const Header = (props: Props) => {
+  const classes = useStyles();
+
+  return (
+    //   <MyThemeComponent>{props.children}</MyThemeComponent>
+    <div className={classes.root}>
+      <AppBar className={classes.appbar} style={{ margin: 0 }}>
+        <Toolbar>
+          <Typography
+            variant="h6"
+            color="inherit"
+            className={classes.typography}
+          >
+            Header
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+};
 
 export default Header;

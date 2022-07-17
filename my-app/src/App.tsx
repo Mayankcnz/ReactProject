@@ -8,6 +8,7 @@ import ProductList from './components/ProductList';
 import useProductFilters, { isOfType } from './services/useProductFilters';
 import Filter from './components/Filter';
 import { filters } from './interfaces/Filter';
+import { Box, Container, Grid } from '@material-ui/core';
 
 // custom color theme that can be applied across application  using ConextAPI
 const customTheme = createTheme({
@@ -39,12 +40,24 @@ function App() {
   return (
     <>
       <ThemeProvider theme={customTheme}>
-        <Header
-          children={<Filter filters={[...filters]} onFilter={handleFilter} />}
-        />
-        <QueryClientProvider client={queryClient}>
-          <ProductList filterBy={models.filters?.filterType} />
-        </QueryClientProvider>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container>
+            <Grid item xs={12}>
+              <div style={{ width: '70%' }}>
+                <Header
+                  children={
+                    <Filter filters={[...filters]} onFilter={handleFilter} />
+                  }
+                />
+              </div>
+            </Grid>
+            <Grid item xs={12} style={{ marginLeft: '40px' }}>
+              <QueryClientProvider client={queryClient}>
+                <ProductList filterBy={models.filters?.filterType} />
+              </QueryClientProvider>
+            </Grid>
+          </Grid>
+        </Box>
       </ThemeProvider>
     </>
   );
