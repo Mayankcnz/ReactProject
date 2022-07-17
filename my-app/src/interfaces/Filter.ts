@@ -21,3 +21,7 @@ export interface FilterProps {
   onFilter: (index: number) => void;
   selectedFilter: string;
 }
+
+export interface SearchProps {
+  onSearch: (text: string) => void;
+}

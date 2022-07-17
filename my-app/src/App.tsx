@@ -6,12 +6,13 @@ import ProductList from './components/ProductList';
 import useProductFilters, { isOfType } from './services/useProductFilters';
 import Filter from './components/Filter';
 import { filters } from './interfaces/Filter';
-import { Container } from '@material-ui/core';
+import { Container, makeStyles } from '@material-ui/core';
 import SearchBar from './components/SearchBar';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import HomeIcon from '@mui/icons-material/Home';
 import CloseIcon from '@mui/icons-material/Close';
+import React from 'react';
 
 // custom color theme that can be applied across application  using ConextAPI
 const customTheme = createTheme({
@@ -23,14 +24,23 @@ const customTheme = createTheme({
   },
 });
 
+const useStyles = makeStyles((theme) => ({
+  container: {
+    padding: 0,
+    '@media (min-width: 780px)': {
+      // important for handling phone and tablet sizes
+      padding: 80,
+    },
+  },
+}));
+
 const HeaderItems = () => (
-  <div style={{ flexGrow: 1 }}>
-    <ArrowBackIcon />
-    <ArrowForwardIcon />
-    <CloseIcon />
-    <HomeIcon />
-    <SearchBar />
-  </div>
+  <>
+    <ArrowBackIcon fontSize="large" />
+    <ArrowForwardIcon fontSize="large" />
+    <CloseIcon fontSize="large" />
+    <HomeIcon fontSize="large" />
+  </>
 );
 
 /**
@@ -39,9 +49,11 @@ const HeaderItems = () => (
 function App() {
   const queryClient = new QueryClient();
 
+  const classes = useStyles();
   // As the app gets bigger , we can look to wrap this in contextapi
   //so as to avoid rendering everytime we ask for this hook in different components
   const { models, operations } = useProductFilters();
+  const [textSearch, setText] = React.useState<string>('');
 
   const handleFilter = (index: number) => {
     const type = filters[index];
@@ -49,13 +61,22 @@ function App() {
     if (isOfType(type)) operations.updateFilter(type);
   };
 
-  const handleSearch = (text: string) => {};
+  const handleSearch = (text: string) => {
+    setText(text);
+  };
 
   return (
     <>
       <ThemeProvider theme={customTheme}>
-        <AppBar children={<HeaderItems />} />
-        <Container maxWidth="xl" style={{ padding: 80 }}>
+        <AppBar
+          children={
+            <div style={{ flexGrow: 1 }}>
+              {' '}
+              <HeaderItems /> <SearchBar onSearch={handleSearch} />{' '}
+            </div>
+          }
+        />
+        <Container maxWidth="xl" className={classes.container}>
           <AppBar
             children={
               <Filter
@@ -65,12 +86,16 @@ function App() {
               />
             }
           />
-
+          {/* can make a lot of optimisations using react query without having
+          // to implement mechanisms ourselves such as caching, infinte
+          Scrolling, pagination etc */}
           <QueryClientProvider client={queryClient}>
-            <ProductList filterBy={models.filters?.filterType || 'All'} />
+            <ProductList
+              filterBy={models.filters?.filterType || 'All'}
+              searchBy={textSearch}
+            />
           </QueryClientProvider>
         </Container>
-        <AppBar positionFixed={true} />
       </ThemeProvider>
     </>
   );

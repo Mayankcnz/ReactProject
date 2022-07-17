@@ -10,12 +10,43 @@ const useStyles = makeStyles({
   },
 });
 
-const ProductList = ({ filterBy }: ProductListI) => {
+const ProductList = ({ filterBy, searchBy }: ProductListI) => {
   const classes = useStyles();
   const { products, status } = useProductsHook();
 
+  // if a filter is selected then filter by type then search text
+  const filteredList =
+    products &&
+    products
+      .filter((product) => product.type === filterBy || filterBy === 'All')
+      .filter((product) =>
+        product.productName.match(new RegExp(searchBy, 'i')),
+      );
+
   return (
     <div className={classes.conatiner}>
+      <Grid container justifyContent="flex-start">
+        {status === 'success' &&
+          filteredList &&
+          filteredList.map((product, i) => (
+            <Grid item xs={12} sm={6} md={4} lg={3}>
+              <Product
+                key={i}
+                productName={product.productName}
+                price={product.price}
+                productImage={product.productImage}
+              />
+            </Grid>
+          ))}
+      </Grid>
+    </div>
+  );
+};
+
+export default ProductList;
+
+/**
+ *  <div className={classes.conatiner}>
       <Grid container justifyContent="flex-start">
         {status === 'success' &&
           products &&
@@ -34,7 +65,4 @@ const ProductList = ({ filterBy }: ProductListI) => {
           )}
       </Grid>
     </div>
-  );
-};
-
-export default ProductList;
+ */

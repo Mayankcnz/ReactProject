@@ -13,5 +13,6 @@ export type ProductProps = Pick<
 >;
 
 export interface ProductListI {
-  filterBy: string | undefined
+  filterBy: string | undefined;
+  searchBy: string;
 }

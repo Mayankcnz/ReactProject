@@ -33,7 +33,7 @@ const Filter = (props: Readonly<FilterProps>) => {
     <div className={classes.root}>
       <FormControl
         sx={{
-          minWidth: 120,
+          minWidth: 200,
         }}
         className={classes.form}
         size="small"

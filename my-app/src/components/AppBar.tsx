@@ -4,22 +4,6 @@ import sx from '@mui/system/sx';
 import Toolbar from '@mui/material/Toolbar';
 import React from 'react';
 
-const MyThemeComponent = styled('div')(
-  sx({
-    color: 'black',
-    backgroundColor: 'yellow',
-    m: 0,
-    padding: 4,
-    borderRadius: 1,
-    position: 'absolute',
-    top: '10%',
-    left: '50%',
-    msTransform: 'translate(-50%, -50%)',
-    transform: 'translate(-50%, -50%)',
-    width: '90%',
-  }),
-);
-
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
