@@ -1,3 +1,8 @@
+To run the project, clone then npm install all the necessary dependencies.
+If the project doesn't start, try disabling prettier
+If prettier is complaining then try changing Select End of Line Sequence to LR instead of CRLF
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
