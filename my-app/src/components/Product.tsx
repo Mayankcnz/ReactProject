@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import { ProductProps } from '../interfaces/Product';
+import { Paper } from '@material-ui/core';
 
 const useStyles = makeStyles({
   container: {
@@ -17,15 +18,30 @@ const useStyles = makeStyles({
     justifyContent: 'center',
   },
 
+  paper: {
+    backgroundColor: 'red',
+    height: 420,
+    flex: 1,
+    display: 'flex',
+    // alignItems: 'flex-end',
+    verticalAlign: 'top',
+    paddingTop: 30,
+    // align: 'center',
+    justifyContent: 'center',
+    elevation: 8,
+    border: '2px solid black',
+  },
+
   card: {
-    maxWidth: 500,
-    height: 340,
-    marginBottom: 30,
-    position: 'fixed',
+    width: 350,
+    height: '100%',
+    // backgroundColor: 'green',
+    // marginBottom: 30,
   },
 
   media: {
-    height: '100%',
+    height: '80%',
+    // marginBottom: 150,
     // width: '100%',
     // margin: 30,
     border: '3px solid black',
@@ -36,14 +52,20 @@ const useStyles = makeStyles({
   },
 
   fiCardContent: {
-    color: '#ffffff',
+    color: '#630707',
     backgroundColor: 'rgba(0,0,0,.24)',
   },
   fiCardContentTextSecondary: {
-    color: 'rgba(255,255,255,0.78)',
+    color: '#610d0dc6',
   },
   cardContent: {
     textAlign: 'center',
+  },
+
+  name: {
+    // height: 10,
+    // verticalAlign: 'center',
+    // align: 'center',
   },
 });
 
@@ -51,17 +73,37 @@ export const Product = (props: Readonly<ProductProps>) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
-      <CardActionArea></CardActionArea>
-      <CardMedia
-        className={classes.media}
-        image={require(`../assets/imgs/${props.productImage}`)}
-        // title="Product"
-      />
-      <CardContent className={classes.cardContent}></CardContent>
-      <Typography gutterBottom variant="h6" component="h2">
-        {props.productName + '  '} ${props.price}
-      </Typography>
-    </Card>
+    <>
+      <Paper className={classes.paper}>
+        <Card className={classes.card}>
+          <CardMedia
+            className={classes.media}
+            image={require(`../assets/imgs/${props.productImage}`)}
+            // title="Product"
+          />
+          <CardContent>
+            <Typography
+              className={classes.name}
+              gutterBottom
+              variant="h5"
+              component="div"
+            >
+              {props.productName + '  '} {props.price}
+            </Typography>
+          </CardContent>
+        </Card>
+      </Paper>
+    </>
   );
 };
+
+/**
+ * <Typography
+          className={classes.name}
+          gutterBottom
+          variant="h5"
+          component="div"
+        >
+          {props.productName + '  '} {props.price}
+        </Typography>
+ */

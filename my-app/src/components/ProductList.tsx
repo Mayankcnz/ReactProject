@@ -9,18 +9,6 @@ const useStyles = makeStyles({
   conatiner: {
     display: 'flex',
   },
-  paper: {
-    height: 420,
-    flex: 1,
-    display: 'flex',
-    // alignItems: 'flex-end',
-    verticalAlign: 'top',
-    paddingTop: 30,
-    // align: 'center',
-    justifyContent: 'center',
-    elevation: 8,
-    border: '2px solid black',
-  },
 });
 
 const GET_PRODUCTS = async (): Promise<ProductData[]> => {
@@ -51,14 +39,12 @@ const ProductList = () => {
           products &&
           products.map((product, i) => (
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Paper className={classes.paper}>
-                <Product
-                  key={i}
-                  productName={product.productName}
-                  price={product.price}
-                  productImage={product.productImage}
-                />
-              </Paper>
+              <Product
+                key={i}
+                productName={product.productName}
+                price={product.price}
+                productImage={product.productImage}
+              />
             </Grid>
           ))}
       </Grid>
