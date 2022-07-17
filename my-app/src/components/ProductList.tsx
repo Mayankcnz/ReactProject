@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 const GET_PRODUCTS = async (): Promise<ProductData[]> => {
   try {
     const { data, status } = await axios.get<{ products: ProductData[] }>(
-      'http://localhost:3001/productsData.json',
+      './productsData.json',
     );
     if (status !== 200) throw new Error('Netword response was not ok');
     return data.products;
@@ -39,7 +39,7 @@ const ProductList = ({ filterBy }: ProductListI) => {
           products &&
           products.map(
             (product, i) =>
-              (filterBy === product.type || filterBy === undefined) && (
+              (filterBy === product.type || filterBy === 'All') && (
                 <Grid item xs={12} sm={6} md={4} lg={3}>
                   <Product
                     key={i}

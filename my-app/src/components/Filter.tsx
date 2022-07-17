@@ -32,7 +32,7 @@ const Filter = (props: Readonly<FilterProps>) => {
   // couldnt make the select form to work without this, quick unnecessary
   // const [filterValue, setValue] = React.useState('');
 
-  // console.log('filterValue', filterValue);
+  console.log('filterValue', props.selectedFilter);
   const handleChange = (index: number) => {
     // setValue(filters[index]);
     props.onFilter(index);

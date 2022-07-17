@@ -51,7 +51,7 @@ function App() {
           />
 
           <QueryClientProvider client={queryClient}>
-            <ProductList filterBy={models.filters?.filterType} />
+            <ProductList filterBy={models.filters?.filterType || 'All'} />
           </QueryClientProvider>
         </Container>
       </ThemeProvider>
