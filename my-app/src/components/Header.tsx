@@ -18,7 +18,7 @@ type Props = {
 /**
  * Takes children prop that allows consumer of this component to render custom props
  * @param props : children
- * @returns 
+ * @returns
  */
 
 const Header = (props: Props) => (

@@ -1,9 +1,9 @@
-// execute all the rules in CRA 
+// execute all the rules in CRA
 {
-    "extends": "react-app",
-    "plugins": ["prettier"],
-    "rules": {
-        // "no-console": "warn"
-        "prettier/prettier": "error"
-    }
+  "extends": "react-app",
+  "plugins": ["prettier"],
+  "rules": {
+    // "no-console": "warn"
+    "prettier/prettier": "error"
+  }
 }

@@ -18,12 +18,16 @@ const useStyles = makeStyles({
   },
 
   card: {
-    maxWidth: 345,
+    maxWidth: 500,
+    height: 340,
+    marginBottom: 30,
+    position: 'fixed',
   },
 
   media: {
-    height: 250,
-    margin: 30,
+    height: '100%',
+    // width: '100%',
+    // margin: 30,
     border: '3px solid black',
   },
 
@@ -52,7 +56,7 @@ export const Product = (props: Readonly<ProductProps>) => {
       <CardMedia
         className={classes.media}
         image={require(`../assets/imgs/${props.productImage}`)}
-        title="Product"
+        // title="Product"
       />
       <CardContent className={classes.cardContent}></CardContent>
       <Typography gutterBottom variant="h6" component="h2">

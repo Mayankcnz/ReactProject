@@ -12,6 +12,6 @@ export type ProductProps = Pick<
   'productName' | 'productImage' | 'price'
 >;
 
-export interface ProductList {
+export interface ProductListI {
   products: ProductData[] | undefined;
 }
