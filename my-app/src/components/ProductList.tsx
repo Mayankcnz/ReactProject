@@ -10,6 +10,11 @@ const useStyles = makeStyles({
   },
 });
 
+/**
+ * we can further take this component and make it full reusable by pdecoupling filtering capabilities and by addng generics
+ * @param param0 
+ * @returns 
+ */
 const ProductList = ({ filterBy, searchBy }: ProductListI) => {
   const classes = useStyles();
   const { products, status } = useProductsHook();
